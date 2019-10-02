@@ -1,92 +1,121 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace CSharpIntro {
-    class Program {
-        static void Main (string[] args) {
-            Console.WriteLine ("Hello World! \n");
+namespace CSharpIntro
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
 
             // make bool, string, and int variables (with values)
-            bool boolVar = true;
-            string stringVar = new string ("Hello World");
-            int intVar = 1;
+
+            // variable: a container for a value of some type
 
             // change their values to something else
-            boolVar = false;
-            stringVar = new string ("Hi World");
-            intVar = 5;
+            bool atWork = true;
+            atWork = false;
+            string name = "Fred";
+            name = "Nick";
+            int associates = 26;
+            associates = 25;
+
+            // types for whole numbers
+            // byte, short, int, long
+            // 1-byte, 2-byte, 4-byte, 8-byte
+
+            // types for fractional numbers
+            // float, double, decimal
+            // 4-byte, 8-byte, 16-byte
+            // 12341273.23
+            // 0.00000123124
 
             // print their values with Console
-            Console.WriteLine ("bool variable = " + boolVar);
-            Console.WriteLine ("string variable = " + stringVar);
-            Console.WriteLine ("int variable = " + intVar);
+            // "Intellisense"
+            Console.WriteLine(atWork);
+            Console.WriteLine(name);
+            Console.WriteLine(associates);
 
             // do something in a for loop
-            Console.WriteLine ("\n do something in a for loop");
-            for (int i = 0; i < 5; i++) {
-                Console.WriteLine ("for loop iteration = " + i);
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(i);
             }
 
             // do something in a while loop
-            Console.WriteLine ("\n do something in a while loop");
-
-            int whileLoopCount = 5;
-            while (whileLoopCount > 0) {
-                Console.WriteLine ("while loop iteration = " + whileLoopCount);
-                whileLoopCount--;
+            atWork = true;
+            while (atWork)
+            {
+                Console.WriteLine("work"); // ran once
+                atWork = false;
             }
-
+            // do-while loops too
             // do something with a switch statement
-            Console.WriteLine ("\n do something with a switch statement");
-            int switchCaseType = 0;
-            switch (switchCaseType) {
-                case 0:
-                    Console.WriteLine ("switch case = 0");
+            switch (name)
+            {
+                case "Fred":
+                    Console.WriteLine("hi fred");
                     break;
-                case 1:
-                    Console.WriteLine ("switch case = 1");
+                case "Nick":
+                    Console.WriteLine("hi me");
                     break;
                 default:
-                    Console.WriteLine ("switch case = default");
+                    Console.WriteLine("i don't know you");
                     break;
             }
 
-            // do something with if, else if, else
-            Console.WriteLine ("\n do something with if, else if, else");
+            // switch expression
+            int number = associates switch
+            {
+                0 => 23,
+                _ => 46 // _ means default pretty much
+            };
 
-            int ifType = 0;
-            if (ifType == 0) {
-                Console.WriteLine ("if case = true");
-            } else if (ifType == 1) {
-                Console.WriteLine ("else if case = true");
-            } else {
-                Console.WriteLine ("else case = true");
+            // do something with if, else if, else
+            if (1 == 2)
+            {
+                Console.WriteLine("chaos"); // if first condition matched
+            }
+            else if (1 == 3)
+            {
+                int num = 4; // if 2nd matched but first didn't
+            }
+            else
+            {
+                Console.WriteLine("sanity"); // if neither matched
             }
 
             // figure out how to make multi-line comments in C#
+
             /*
-                this
-                is a
-                multi-line
-                comment
-            */
+             multiline
+
+                comments
+             */
 
             // figure out how to format your document in VS Code
-            // shift + alt + 'f'
+            // format document with alt+shift+f
 
             // extra: make a new static method to do something and call it
-            Console.WriteLine ("\n make and call a static method");
-            Program.StaticMethode ();
+            Console.WriteLine(Quote("ASDF"));
 
             // extra: learn what "var" means in C# and try it out.
-            /*
-                -the "var" type implicitly sets the type of a variable
-                -compiler determins the type
-            */
+            var a = 15;
+            var b = "asdf";
+
+            // a = "string";
+            // var variable; // doesn't make sense, it can't tell what the "var" should mean
+            var list = new List<int>();
         }
 
-        // example of a static method
-        static void StaticMethode () {
-            Console.WriteLine ("static method called");
+        static string Quote(string s)
+        {
+            // return a version of that string with quotes around it and lowercase
+            // return "\"" + s.ToLower() + "\"";
+            //
+            // string interpolation syntax
+            return $"\"{s.ToLower()}\"";
         }
     }
 }
